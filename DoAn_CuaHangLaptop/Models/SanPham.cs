@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace DoAn_CuaHangLaptop.Models
         string tenSP;
         int soLuong;
         string mauSac;
-        string cPU;
+        string boXuLy;
         string rAM;
         string oCung;
         string manHinh;
@@ -34,13 +35,13 @@ namespace DoAn_CuaHangLaptop.Models
         {
         }
 
-        public SanPham(string maSP, string tenSP, int soLuong, string mauSac, string cPU, string rAM, string oCung, string manHinh, string cardMH, string congKN, string dacBiet, string hDH, string thietKe, string kichThuoc_TrongLuong, string webcam, string pin, int raMat, string moTa, long donGia, string hinhAnh, string danhMuc)
+        public SanPham(string maSP, string tenSP, int soLuong, string mauSac, string boXuLy, string rAM, string oCung, string manHinh, string cardMH, string congKN, string dacBiet, string hDH, string thietKe, string kichThuoc_TrongLuong, string webcam, string pin, int raMat, string moTa, long donGia, string hinhAnh, string danhMuc)
         {
             this.MaSP = maSP;
             this.TenSP = tenSP;
             this.SoLuong = soLuong;
             this.MauSac = mauSac;
-            this.CPU = cPU;
+            this.BoXuLy = boXuLy;
             this.RAM = rAM;
             this.OCung = oCung;
             this.ManHinh = manHinh;
@@ -71,22 +72,22 @@ namespace DoAn_CuaHangLaptop.Models
         [Required]
         [Display(Name = "Màu sắc")]
         public string MauSac { get => mauSac; set => mauSac = value; }
-        [Required]
-        [Display(Name = "CPU")]
-        public string CPU { get => cPU; set => cPU = value; }
-        [Required]
+        [ForeignKey("MaBXL")]
+        [Display(Name = "BoXuLy")]
+        public string BoXuLy { get => boXuLy; set => boXuLy = value; }
+        [ForeignKey("MaRAM")]
         [Display(Name = "RAM")]
         public string RAM { get => rAM; set => rAM = value; }
         [Required]
         [Display(Name = "Ổ cứng")]
         public string OCung { get => oCung; set => oCung = value; }
-        [Required]
+        [ForeignKey("MaNH")]
         [Display(Name = "Màn hình")]
         public string ManHinh { get => manHinh; set => manHinh = value; }
         [Required]
         [Display(Name = "Card màn hình")]
         public string CardMH { get => cardMH; set => cardMH = value; }
-        [Required]
+        [ForeignKey("MaCKN")]
         [Display(Name = "Cổng kết nối")]
         public string CongKN { get => congKN; set => congKN = value; }
         [Required]
@@ -119,7 +120,7 @@ namespace DoAn_CuaHangLaptop.Models
         [Required]
         [Display(Name = "Hình ảnh")]
         public string HinhAnh { get => hinhAnh; set => hinhAnh = value; }
-        [Required]
+        [ForeignKey("MaDM")]
         [Display(Name = "Danh mục")]
         public string DanhMuc { get => danhMuc; set => danhMuc = value; }
     }
