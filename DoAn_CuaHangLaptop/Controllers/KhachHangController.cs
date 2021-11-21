@@ -49,13 +49,13 @@ namespace DoAn_CuaHangLaptop.Controllers
             {
                 ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
             }
-            else if (context.taoKhachHang(kh) == 1)
+            else if(context.taoKhachHang(kh) == 1)
             {
                 ModelState.AddModelError("", "Email đã tồn tại");
             }
             else
             {
-                return RedirectToAction("Login","TaiKhoan");
+                return Redirect("/KhachHang/Index");
             }
             return View(kh);
         }
